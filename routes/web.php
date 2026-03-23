@@ -8,8 +8,11 @@ use App\Http\Controllers\AuthController;
 use GuzzleHttp\Middleware;
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+// Card
+Route::resource('cart', [HomeController::class, 'index'])->middleware('auth');
+
 
 // Products
 Route::resource('products', ProductController::class);
