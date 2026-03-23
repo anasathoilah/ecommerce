@@ -1,0 +1,28 @@
+/* Semua nav-link */
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden; /* Hilangkan scroll */
+}
+.nav-item .nav-link {
+  color: red !important;
+}
+
+/* Hover */
+.navbar .nav-link:hover {
+  color: yellow !important;
+}
+
+/* Link aktif */
+.nav .nav-link.active {
+  background-color: #ca1ba7 !important;
+  color: white !important;
+}
+
+/* Link disabled */
+.nav .nav-link.bg-primary {
+  color: #ccc !important;
+}
+.raw {
+  background-color: #ca1ba7;
+}
