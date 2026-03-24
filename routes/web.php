@@ -5,13 +5,18 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController; 
 use App\Http\Controllers\HomeController; 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use GuzzleHttp\Middleware;
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Card
-Route::resource('cart', [HomeController::class, 'index'])->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::resource('cart', CartController::class);
+});
+
 
 
 // Products
@@ -33,6 +38,10 @@ Route::resource('products', ProductController::class);
 // GET /products/{id}/edit	products.edit
 // PUT/PATCH /products/{id}	products.update
 // DELETE /products/{id}	products.destroy
+
+//checkout
+Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 
 // Login 
 Route::get('/login' , [AuthController::class, 'showLogin'])->name('login');

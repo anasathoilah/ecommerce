@@ -71,6 +71,8 @@
                 </form>
             </div>
             <a class="nav-link" href="{{ route('products.index') }}" role="tab" > Daftar Produk</a>
+            <a class="nav-link" href="{{ route('cart.index') }}" role="tab" > Cart Produk</a>
+            @yield('extra-links')
         </div>
     </div>
 
