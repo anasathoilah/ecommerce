@@ -30,11 +30,35 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {   
+        $request->validate([
+        'name' => 'required|string',
+        'description' => 'nullable|string',
+        'price' => 'required|numeric',
+        'stock' => 'required|integer',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+        ]);
+
+        $path = null ;
+        if ($request->hasFile('image')) {
+            // simpan file ke storage/app/public/products
+            $path = $request->file('image')->store('products','public');
+            // dd($path);
+        }
+
+         Product::create([
+        'name' => $request->name,
+        'description' => $request->description,
+        'price' => $request->price,
+        'stock' => $request->stock,
+        'image' => $path, // simpan path file
+    ]);
+
+    return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan');
 
         // CREATE: form tambah produk
-        Product::create($request->all());
-        return redirect()->route('products.index');
+        // Product::create($request->all());
+        // return redirect()->route('products.index');
     }
 
     /**

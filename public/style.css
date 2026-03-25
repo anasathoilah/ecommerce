@@ -5,24 +5,13 @@ html, body {
   overflow-x: hidden; /* Hilangkan scroll */
 }
 .nav-item .nav-link {
-  color: red !important;
+  color: rgb(255, 255, 255) !important;
+}
+.nav-item .nav-link:hover {
+  background-color: rgb(128, 128, 201);
 }
 
 /* Hover */
 .navbar .nav-link:hover {
   color: yellow !important;
-}
-
-/* Link aktif */
-.nav .nav-link.active {
-  background-color: #ca1ba7 !important;
-  color: white !important;
-}
-
-/* Link disabled */
-.nav .nav-link.bg-primary {
-  color: #ccc !important;
-}
-.raw {
-  background-color: #ca1ba7;
 }

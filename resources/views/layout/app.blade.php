@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('public/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
   </head>
   <body >
     <div class="container-fluid">
@@ -21,13 +21,13 @@
                 </form>
             <ul class="nav justify-content-end bg-primary">
             <li class="nav-item bg-primary">
-                <a class="nav-link active" href="#">Keranjang</a>
+                <a class="nav-link" href="{{route('products.index')}}">Lihat Product</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Notifikasi</a>
+                <a class="nav-link" href="">Notifikasi</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Buka Toko</a>
+                <a class="nav-link" href="">Buka Toko</a>
             </li>
             <li class="nav-item">
                 <div class="dropdown float-right">

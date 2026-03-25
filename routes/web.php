@@ -17,6 +17,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('cart', CartController::class);
 });
 
+// Tambah Card
+Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
 
 
 // Products
@@ -39,7 +41,7 @@ Route::resource('products', ProductController::class);
 // PUT/PATCH /products/{id}	products.update
 // DELETE /products/{id}	products.destroy
 
-//checkout
+// Checkout
 Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 

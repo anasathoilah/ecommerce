@@ -31,6 +31,7 @@
             <label for="quantity" class="form-label">Jumlah</label>
             <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" required>
         </div>
+        
 
         <button type="submit" class="btn btn-primary">Tambah ke Cart</button>
     </form>
