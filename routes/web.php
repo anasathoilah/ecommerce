@@ -7,10 +7,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
-use GuzzleHttp\Middleware;
+use App\Http\Controllers\OrderController;
 
-Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
+
+// Home
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth','isAdmin'])->get('/admin/dashboard', [AdminController::class, 'index'])
+    ->name('admin.dashboard');
 
 // Card
 Route::middleware('auth')->group(function () {
@@ -20,9 +24,33 @@ Route::middleware('auth')->group(function () {
 // Tambah Card
 Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
 
+Route::get('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
+
 
 // Products
 Route::resource('products', ProductController::class);
+
+
+// Order (lihat riwayat pesanan) 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+});
+
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('/orders/admin', [OrderController::class, 'adminIndex'])->name('orders.adminIndex');
+     Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+}) ;
+
+
+// Admin (update status pesanan)
+// Route::middleware(['auth','isCustomer'])->group(function () {
+//     Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+//     Route::get('/orders/admin', [OrderController::class, 'adminIndex'])->name('orders.adminIndex');
+// });
+Route::middleware(['auth','isAdmin'])->get('/admin/test', function () {
+    return "Halo Admin!";
+});
+
 
 // Dengan Route resource otomatis akan menambahkan route ini :
 // /products → index (daftar produk)

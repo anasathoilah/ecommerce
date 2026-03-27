@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -21,13 +21,12 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        //Tabel ini dipakai untuk fitur reset password. Saat user lupa password, token disimpan di sini.
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary(); //Email jadi primary key
-            $table->string('token'); // Token reset password
-            $table->timestamp('created_at')->nullable();// Waktu token dibuat
+            $table->string('email')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
-        //Tabel ini dipakai Laravel untuk menyimpan session kalau kamu pakai database driver di config/session.php.
+
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();

@@ -48,7 +48,7 @@
                         </div>
                     </a>
                     <a class="dropdown-item" href="#"><i class="bi bi-gear-fill"></i>Setting</a>
-                    <a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-left"></i>Logout</a>
+                    <!-- <a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-left"></i>Logout</a> -->
                 </div>
             </div> 
             </li>
@@ -68,10 +68,12 @@
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
+                    
                 </form>
             </div>
             <a class="nav-link" href="{{ route('products.index') }}" role="tab" > Daftar Produk</a>
             <a class="nav-link" href="{{ route('cart.index') }}" role="tab" > Cart Produk</a>
+            <a class="nav-link" href="{{ route('orders.index') }}" role="tab" > Order </a>
             @yield('extra-links')
         </div>
     </div>

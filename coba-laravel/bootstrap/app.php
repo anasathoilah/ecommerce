@@ -11,12 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-    $middleware->alias([
-            'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-            'isAdmin' => \App\Http\Middleware\IsAdmin::class,
-            'isCustomer' => \App\Http\Middleware\IsCustomer::class,
-            'isOwner' => \App\Http\Middleware\IsOwner::class,
-        ]);
+        //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
